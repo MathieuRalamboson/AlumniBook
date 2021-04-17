@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,7 @@ public class ApiController {
      * @param id
      * @return
      */
+    @Transactional
     @RequestMapping(path="/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> deleteAlumni(@PathVariable Integer id) {
 
