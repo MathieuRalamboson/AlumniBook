@@ -20,6 +20,9 @@ public class Alumni implements Serializable {
     private Date graduationDate;
     private String imageUrl;
 
+    public Alumni() {
+    }
+
     public Alumni(String name, String jobTitle, String email, Date graduationDate, String imageUrl) {
         this.name = name;
         this.jobTitle= jobTitle;
