@@ -1,4 +1,4 @@
-package com.MathieuRalamboson.alumniBook.Controller;
+package com.MathieuRalamboson.alumniBook.Gestionnaire;
 
 import com.MathieuRalamboson.alumniBook.Exception.ApplicationException;
 import com.MathieuRalamboson.alumniBook.Interface.InterfaceAlumni;
@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class AlumniController {
+public class GestionnaireAlumni {
 
     @Autowired
     private InterfaceAlumni interfaceAlumni;
@@ -46,10 +46,9 @@ public class AlumniController {
 
     /**
      * Fonction recupération de la liste d'alumni en base
-     * @param alumni
      * @return
      */
-    public List<Alumni> findAllAlumni(Alumni alumni) {
+    public List<Alumni> findAllAlumni() {
         return interfaceAlumni.findAll();
     }
 
