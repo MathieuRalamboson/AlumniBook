@@ -1,0 +1,13 @@
+package com.MathieuRalamboson.alumniBook;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AlumniBookApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
