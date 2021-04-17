@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/alumni")
@@ -65,6 +66,17 @@ public class ApiController {
         if(gestionnaireAlumni.findAlumniById(id) != null) {
             gestionnaireAlumni.updateAlumni(alumni);
             return new ResponseEntity<>(alumni,HttpStatus.OK);
+        } else {
+            throw new ApplicationException("L'alumni avec l'identifiant " + id + "n'a pas été trouver en base !");
+        }
+    }
+
+    @RequestMapping(path="/getAlumni/{id}",method = RequestMethod.GET)
+    public ResponseEntity<Object> getAlumniById(@PathVariable Integer id) {
+
+        if(gestionnaireAlumni.findAlumniById(id) != null) {
+            Optional<Alumni> alumniTrouver = gestionnaireAlumni.findAlumniById(id);
+            return new ResponseEntity<>(alumniTrouver,HttpStatus.OK);
         } else {
             throw new ApplicationException("L'alumni avec l'identifiant " + id + "n'a pas été trouver en base !");
         }
