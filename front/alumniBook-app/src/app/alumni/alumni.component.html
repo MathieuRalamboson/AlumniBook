@@ -1,4 +1,10 @@
-<p>alumni works!</p>
 <div *ngFor="let alumni of alumniList">
     <div>{{alumni.name}}</div>
 </div>
+<div class="container">
+    <angular-slickgrid gridId="grid1"
+              [columnDefinitions]="columnDefinitions"
+              [gridOptions]="gridOptions"
+              [dataset]="dataset">
+    </angular-slickgrid>
+  </div>
