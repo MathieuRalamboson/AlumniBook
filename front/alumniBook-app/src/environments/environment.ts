@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   webservice  :
   {
-    server : 'https://localhost:5432',
+    server : 'http://localhost:8080',
   }
 };
 

@@ -21,7 +21,6 @@ export class AlumniService {
    */
   public getAllAlumni(): Observable<any> {
     const url = `${this._server}/alumni/getAllAlumni`;
-
     return this.http.get<Alumni[]>(url);
   }
 
