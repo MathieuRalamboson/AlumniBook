@@ -16,8 +16,27 @@
             <div class="modal-header ">
                 Modal de création
             </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
 
-            <div class="modal-body"> Body</div>
+                <div class="form-group">
+                    <label for="name">Emploi actuel*</label>
+                    <input type="text" class="form-control" id="jobTitle">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Email*</label>
+                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Date de diplomation*</label>
+                    <input type="text" class="form-control" id="graduationDate">
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger"  (click) = "onClickFermerModal()">Fermer</button>
                 <button type="button" class="btn btn-success"  (click) = "onClickEnregistrerModal()">Enregistrer</button>
