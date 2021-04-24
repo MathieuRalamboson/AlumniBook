@@ -2,9 +2,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Alumni } from '../alumni';
 import { AlumniService } from '../alumni.service';
-import { Column, GridOdataService, GridOption } from 'angular-slickgrid';
 import { Router } from '@angular/router';
 import { query } from '@angular/animations';
+import {
+  Column,
+  GridOption,
+  OnEventArgs,
+  Formatter,
+  GridOdataService,
+  Filters,
+  AngularGridInstance,
+  ExtensionName
+} from 'angular-slickgrid';
 
 
 @Component({
@@ -33,6 +42,11 @@ export class AlumniComponent implements OnInit {
   constructor(
     private alumniService: AlumniService,
     private router: Router) { }
+
+  // Formatter du bouton d'edition
+  editerFormatter: Formatter = (row: number, cell: number, value: any, columnDef: Column, dataContext: any, grid?: any) => {
+  return `<button type="button" class="btn btn-sm btn-ouvrir" title="Editer le paramètrage d\'export" >   <i class="fa fa-edit"></i></button>`;
+  };
 
   ngOnInit(): void {
     this.getAllAlumni();
@@ -137,7 +151,19 @@ export class AlumniComponent implements OnInit {
       { id: 'nom', name: 'Nom', field: 'name'},
       { id: 'jobTitle', name: 'Emploi', field: 'jobTitle'},
       { id: 'email', name: 'Email', field: 'email'},
-      
+      {
+        id: 'edit-alumni',
+        cssClass: 'boutonsAction',
+        name: '',
+        excludeFromExport: true,
+        field: 'edit',
+        maxWidth: 45,
+        minWidth: 45,
+        formatter: this.editerFormatter,
+        onCellClick: (e: Event, args: OnEventArgs) => {
+          this.onSelectedAlumni(args.dataContext);
+        },
+      },
     ];
 
     this.gridOptions = {
