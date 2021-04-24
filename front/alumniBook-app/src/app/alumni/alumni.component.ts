@@ -59,6 +59,7 @@ export class AlumniComponent implements OnInit {
   }
  
   onClickAddAlumni() {
+    this.clearForm();
     this.showModal();
   }
 
@@ -96,9 +97,24 @@ export class AlumniComponent implements OnInit {
 
   }
 
+  fillForm(alumni:any) {
+    this.name = alumni.name;
+    this.email = alumni.email;
+    this.jobTitle = alumni.jobTitle;
+  }
+
+  clearForm() {
+    this.name = undefined;
+    this.email = undefined;
+    this.jobTitle = undefined;
+  }
+
   onSelectedAlumni(alumni:any) : void {
     this.selectedAlumni = alumni;
     console.log(this.selectedAlumni);
+
+    // On rempli la modal pour la modification d'un alumni
+    this.fillForm(alumni)
     this.showModal();
 
   }
