@@ -7,12 +7,26 @@
 </li>
 
 <button (click) = "onClickAddAlumni()">Ajouter un alumni</button>
-<button (click) = "onClickFermerModal()">Fermer</button>
 
 <!-- Modal Création/Modification -->
+<div [style.display]="displayModal ? 'block' : 'none'" class="modal">
 <div *ngIf="displayModal">
-    <h4>Modal de création</h4>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                Modal de création
+            </div>
+
+            <div class="modal-body"> Body</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger"  (click) = "onClickFermerModal()">Fermer</button>
+                <button type="button" class="btn btn-success"  (click) = "onClickEnregistrerModal()">Enregistrer</button>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+
 
 <!-- SlickGrid -->
 <!-- <div class="container">

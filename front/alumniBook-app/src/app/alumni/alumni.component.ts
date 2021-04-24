@@ -54,6 +54,11 @@ export class AlumniComponent implements OnInit {
     this.hideModal();
   }
 
+  onClickEnregistrerModal() {
+    this.hideModal();
+    console.log("Enregistrement!")
+  }
+
   prepareGrid() {
     this.columnDefinitions = [
       { id: 'nom', name: 'Nom', field: 'nom'},
