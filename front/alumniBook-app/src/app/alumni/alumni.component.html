@@ -1,6 +1,8 @@
 <h2 >Liste des alumnis :</h2>
 
-<li *ngFor="let alumni of alumniList">
+<li *ngFor="let alumni of alumniList"
+[class.selected]="alumni === selectedAlumni"
+(click)="onSelectedAlumni(alumni)">
     <span> {{alumni.name}}, </span>
     <span> {{alumni.jobTitle}}, </span>
     <span> {{alumni.email}}, </span>
@@ -19,23 +21,23 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="name">Name*</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" [(ngModel)]="name" class="form-control" id="name">
                 </div>
 
                 <div class="form-group">
                     <label for="name">Emploi actuel*</label>
-                    <input type="text" class="form-control" id="jobTitle">
+                    <input type="text" [(ngModel)]="jobTitle" class="form-control" id="jobTitle">
                 </div>
 
                 <div class="form-group">
                     <label for="name">Email*</label>
-                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                    <input type="text" [(ngModel)]="email" class="form-control" id="email">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="name">Date de diplomation*</label>
-                    <input type="text" class="form-control" id="graduationDate">
-                </div>
+                    <input type="text" [(ngModel)]="graduationDate" class="form-control" id="graduationDate">
+                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger"  (click) = "onClickFermerModal()">Fermer</button>

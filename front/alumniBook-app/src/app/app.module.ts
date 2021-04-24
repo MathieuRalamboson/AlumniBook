@@ -6,6 +6,7 @@ import { AlumniComponent } from './alumni/alumni.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularSlickgridModule } from 'angular-slickgrid';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AngularSlickgridModule } from 'angular-slickgrid';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularSlickgridModule.forRoot()
+    AngularSlickgridModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

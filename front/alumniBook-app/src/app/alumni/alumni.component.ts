@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Alumni } from '../alumni';
 import { AlumniService } from '../alumni.service';
 import { Column, GridOption } from 'angular-slickgrid';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,12 +19,24 @@ export class AlumniComponent implements OnInit {
   //Modale
   displayModal: boolean = false;
 
+  // Alumni objet
   alumniList = Array<Alumni>();
-  constructor(private alumniService: AlumniService) { }
+  selectedAlumni?: Alumni;
+  name: any;
+  jobTitle:any;
+  email:any;
+  graduationDate: Date | undefined;
+  constructor(
+    private alumniService: AlumniService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getAllAlumni();
     this.prepareGrid();
+  }
+
+  ngOnChanges(changes : SimpleChange): void {
+    this.getAllAlumni();
   }
 
   public getAllAlumni() {
@@ -36,6 +49,15 @@ export class AlumniComponent implements OnInit {
     });
   }
 
+  public addAlumni(params:any) {
+    this.alumniService.createAlummni(params).subscribe( data => {
+      console.log(data);
+    },
+    (error: HttpErrorResponse) => {
+      console.log("Error: addAlumni");
+    });
+  }
+ 
   onClickAddAlumni() {
     this.showModal();
   }
@@ -56,7 +78,29 @@ export class AlumniComponent implements OnInit {
 
   onClickEnregistrerModal() {
     this.hideModal();
+    this.submit();
     console.log("Enregistrement!")
+  }
+
+  submit() {
+    const newForm: any = {
+      name: this.name,
+      jobTitle: this.jobTitle,
+      email: this.email,
+      graduationDate:this.graduationDate,
+    }
+
+    // On appel le WS de cration de données
+    // avec les données du formulaire
+    this.addAlumni(newForm);
+
+  }
+
+  onSelectedAlumni(alumni:any) : void {
+    this.selectedAlumni = alumni;
+    console.log(this.selectedAlumni);
+    this.showModal();
+
   }
 
   prepareGrid() {
