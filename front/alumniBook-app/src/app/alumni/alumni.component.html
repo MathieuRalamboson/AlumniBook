@@ -1,14 +1,24 @@
 <h2 >Liste des alumnis :</h2>
 
 <li *ngFor="let alumni of alumniList">
-    <span> {{alumni.name}} </span>
-    <span> {{alumni.jobTitle}} </span>
-    <span> {{alumni.email}} </span>
+    <span> {{alumni.name}}, </span>
+    <span> {{alumni.jobTitle}}, </span>
+    <span> {{alumni.email}}, </span>
 </li>
-<div class="container">
+
+<button (click) = "onClickAddAlumni()">Ajouter un alumni</button>
+<button (click) = "onClickFermerModal()">Fermer</button>
+
+<!-- Modal Création/Modification -->
+<div *ngIf="displayModal">
+    <h4>Modal de création</h4>
+</div>
+
+<!-- SlickGrid -->
+<!-- <div class="container">
     <angular-slickgrid gridId="grid1"
               [columnDefinitions]="columnDefinitions"
               [gridOptions]="gridOptions"
               [dataset]="dataset">
     </angular-slickgrid>
-  </div>   
+</div>    -->

@@ -15,6 +15,9 @@ export class AlumniComponent implements OnInit {
   gridOptions: GridOption = {};
   dataset: any[] = [];
 
+  //Modale
+  displayModal: boolean = false;
+
   alumniList = Array<Alumni>();
   constructor(private alumniService: AlumniService) { }
 
@@ -31,6 +34,24 @@ export class AlumniComponent implements OnInit {
     (error : HttpErrorResponse) => {
       console.log("Error: getAllAlumni");
     });
+  }
+
+  onClickAddAlumni() {
+    this.showModal();
+  }
+
+  showModal() {
+    this.displayModal = true;
+    console.log("Modale Ouverte !");
+  }
+
+  hideModal() {
+    this.displayModal = false;
+    console.log("Modale Fermer !");
+  }
+
+  onClickFermerModal() {
+    this.hideModal();
   }
 
   prepareGrid() {
