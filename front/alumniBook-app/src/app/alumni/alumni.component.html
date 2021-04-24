@@ -15,9 +15,8 @@
 <div *ngIf="displayModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header ">
-                Modal de création
-            </div>
+            <div *ngIf='!modeEdition' class="modal-header "> Modal de création d'un alumni</div>
+            <div *ngIf='modeEdition'class="modal-header "> Modal de modification d'un alumni</div>
             <div class="modal-body">
                 <div class="form-group">
                     <label for="name">Name*</label>

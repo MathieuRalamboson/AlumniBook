@@ -16,8 +16,11 @@ export class AlumniComponent implements OnInit {
   gridOptions: GridOption = {};
   dataset: any[] = [];
 
-  //Modale
+  // Modale
   displayModal: boolean = false;
+
+  // Mode Edition
+  modeEdition: boolean = false;
 
   // Alumni objet
   alumniList = Array<Alumni>();
@@ -70,6 +73,8 @@ export class AlumniComponent implements OnInit {
 
   hideModal() {
     this.displayModal = false;
+    // Passage en mode Création
+    this.modeEdition = false;
     console.log("Modale Fermer !");
   }
 
@@ -110,6 +115,10 @@ export class AlumniComponent implements OnInit {
   }
 
   onSelectedAlumni(alumni:any) : void {
+    // Passage en mode Edition
+    this.modeEdition = true;
+
+    // On recupère l'objet cliquer
     this.selectedAlumni = alumni;
     console.log(this.selectedAlumni);
 
