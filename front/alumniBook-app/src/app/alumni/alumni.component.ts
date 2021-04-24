@@ -35,6 +35,7 @@ export class AlumniComponent implements OnInit {
   // Alumni objet
   alumniList = Array<Alumni>();
   selectedAlumni?: Alumni;
+  id:any;
   name: any;
   jobTitle:any;
   email:any;
@@ -45,7 +46,12 @@ export class AlumniComponent implements OnInit {
 
   // Formatter du bouton d'edition
   editerFormatter: Formatter = (row: number, cell: number, value: any, columnDef: Column, dataContext: any, grid?: any) => {
-  return `<button type="button" class="btn btn-sm btn-ouvrir" title="Editer le paramètrage d\'export" >   <i class="fa fa-edit"></i></button>`;
+  return `<button type="button" class="btn btn-sm btn-ouvrir" title="Modifier un alumni" >   <i class="fa fa-edit"></i></button>`;
+  };
+
+  // Formatter du bouton de suppression
+  deleteFormatter: Formatter = (row: number, cell: number, value: any, columnDef: Column, dataContext: any, grid?: any) => {
+  return `<button type="button" class="btn btn-sm btn-ouvrir" title="Supprimer un alumni" >   <i class="fa fa-remove"></i></button>`;
   };
 
   ngOnInit(): void {
@@ -73,6 +79,14 @@ export class AlumniComponent implements OnInit {
   public addAlumni(params:any) {
     this.alumniService.createAlummni(params).subscribe( data => {
       console.log(data);
+    },
+    (error: HttpErrorResponse) => {
+      console.log("Error: addAlumni");
+    });
+  }
+
+  public deleteAlumni(id:any) {
+    this.alumniService.deleteAlumni(id).subscribe ( data => {
     },
     (error: HttpErrorResponse) => {
       console.log("Error: addAlumni");
@@ -120,6 +134,10 @@ export class AlumniComponent implements OnInit {
 
   }
 
+  delete(id:any) {
+    this.deleteAlumni(id)
+  }
+
   fillForm(alumni:any) {
     this.name = alumni.name;
     this.email = alumni.email;
@@ -162,6 +180,20 @@ export class AlumniComponent implements OnInit {
         formatter: this.editerFormatter,
         onCellClick: (e: Event, args: OnEventArgs) => {
           this.onSelectedAlumni(args.dataContext);
+        },
+      },
+      {
+        id: 'delete-alumni',
+        cssClass: 'boutonsAction',
+        name: '',
+        excludeFromExport: true,
+        field: 'delete',
+        maxWidth: 45,
+        minWidth: 45,
+        formatter: this.deleteFormatter,
+        onCellClick: (e: Event, args: OnEventArgs) => {
+          console.log(args.dataContext);
+           this.delete(args.dataContext.id);
         },
       },
     ];
