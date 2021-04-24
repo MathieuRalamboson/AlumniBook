@@ -1,10 +1,14 @@
-<div *ngFor="let alumni of alumniList">
-    <div>{{alumni.name}}</div>
-</div>
+<h2 >Liste des alumnis :</h2>
+
+<li *ngFor="let alumni of alumniList">
+    <span> {{alumni.name}} </span>
+    <span> {{alumni.jobTitle}} </span>
+    <span> {{alumni.email}} </span>
+</li>
 <div class="container">
     <angular-slickgrid gridId="grid1"
               [columnDefinitions]="columnDefinitions"
               [gridOptions]="gridOptions"
               [dataset]="dataset">
     </angular-slickgrid>
-  </div>
+  </div>   
