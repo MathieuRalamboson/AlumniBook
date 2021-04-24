@@ -2,8 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Alumni } from '../alumni';
 import { AlumniService } from '../alumni.service';
-import { Column, GridOption } from 'angular-slickgrid';
+import { Column, GridOdataService, GridOption } from 'angular-slickgrid';
 import { Router } from '@angular/router';
+import { query } from '@angular/animations';
 
 
 @Component({
@@ -36,6 +37,9 @@ export class AlumniComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAlumni();
     this.prepareGrid();
+
+    // Charge les données en base
+    this.alumniService.getAllAlumni().subscribe(((data: any[]) => this.dataset = data) as any)
   }
 
   ngOnChanges(changes : SimpleChange): void {
@@ -130,32 +134,18 @@ export class AlumniComponent implements OnInit {
 
   prepareGrid() {
     this.columnDefinitions = [
-      { id: 'nom', name: 'Nom', field: 'nom'},
-      { id: 'prenom', name: 'Prénom', field: 'prenom'},
+      { id: 'nom', name: 'Nom', field: 'name'},
+      { id: 'jobTitle', name: 'Emploi', field: 'jobTitle'},
+      { id: 'email', name: 'Email', field: 'email'},
       
     ];
 
     this.gridOptions = {
       enableAutoResize: true,
-      enableSorting: true
+      enableSorting: true,
+      forceFitColumns: true,
+      alwaysShowVerticalScroll: false,
+      contextMenu: { hideExportExcelCommand: true },
     };
-
-    // fill the dataset with your data
-    this.dataset = [
-      {
-        id:'1',
-        nom : "Papa",
-        prenom : "Papa"
-      },
-      {
-        id:'2',
-        nom : "Maman",
-        prenom : "Maman"
-      },
-  ];
   }
-
-
-
-
 }

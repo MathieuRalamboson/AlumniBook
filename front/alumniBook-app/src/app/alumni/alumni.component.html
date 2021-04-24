@@ -8,13 +8,13 @@
   </nav>
 
 
-<li *ngFor="let alumni of alumniList"
+<!-- <li *ngFor="let alumni of alumniList"
 [class.selected]="alumni === selectedAlumni"
 (click)="onSelectedAlumni(alumni)">
     <span> {{alumni.name}}, </span>
     <span> {{alumni.jobTitle}}, </span>
     <span> {{alumni.email}}, </span>
-</li>
+</li> -->
 
 <!-- Modal Création/Modification -->
 <div [style.display]="displayModal ? 'block' : 'none'" class="modal">
@@ -55,10 +55,10 @@
 
 
 <!-- SlickGrid -->
-<!-- <div class="container">
+<div class="container">
     <angular-slickgrid gridId="grid1"
               [columnDefinitions]="columnDefinitions"
               [gridOptions]="gridOptions"
               [dataset]="dataset">
     </angular-slickgrid>
-</div>    -->
+</div>   
