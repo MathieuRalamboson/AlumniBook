@@ -177,12 +177,14 @@ export class AlumniComponent implements OnInit {
       { id: 'nom', name: 'Nom', field: 'name'},
       { id: 'jobTitle', name: 'Emploi', field: 'jobTitle'},
       { id: 'email', name: 'Email', field: 'email'},
+      { id: "code", name: "Code étudiant", field: "Code étudiant", cssClass: "cell-title"},
       {
         id: 'edit-alumni',
         cssClass: 'boutonsAction',
         name: 'Modification',
         excludeFromExport: true,
         field: 'edit',
+        width: 50,
         formatter: this.editerFormatter,
         onCellClick: (e: Event, args: OnEventArgs) => {
           this.onSelectedAlumni(args.dataContext);
@@ -194,6 +196,7 @@ export class AlumniComponent implements OnInit {
         name: 'Suppression',
         excludeFromExport: true,
         field: 'delete',
+        width: 50,
         formatter: this.deleteFormatter,
         onCellClick: (e: Event, args: OnEventArgs) => {
           console.log(args.dataContext);

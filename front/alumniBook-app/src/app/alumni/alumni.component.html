@@ -45,11 +45,15 @@
 </div>
 
 
+
 <!-- SlickGrid -->
-<div class="container">
-    <angular-slickgrid gridId="grid1"
+<div class="grid">
+    <div class="grid-title">Liste d'ancien étudiant</div>
+    <div class="grid-body">
+        <angular-slickgrid gridId="grid1"
               [columnDefinitions]="columnDefinitions"
               [gridOptions]="gridOptions"
               [dataset]="dataset">
-    </angular-slickgrid>
+        </angular-slickgrid>
+    </div>
 </div>   

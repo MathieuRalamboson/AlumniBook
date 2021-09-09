@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/////////////// MODAL ///////////////////////////////////
 .modal {
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -33,4 +33,54 @@
 
   .button-search {
       color: white;
+  }
+
+/////////////// GRID ///////////////////////////////////
+.grid {
+  width: 75%;
+  height: 800px;
+  margin-left: 20px;
+  margin-right:20px;
+
+  .grid-title {
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 15px 15px 0 0;
+  }
+
+
+}
+
+/////////////// CELLULE ///////////////////////////////////
+
+  .cell-title {
+    font-weight: bold;
+  }
+
+  .cell-effort-driven {
+    text-align: center;
+  }
+
+  .label {
+    font-size: 18px;
+    font-weight: bold;
+    background: bisque;
+  }
+
+/////////////// BACKGROUND ///////////////////////////////////
+
+  .green {
+    background-color: #aaffaa;
+  }
+  .red {
+    background-color: #ff7777;
+  }
+  .orange {
+    background-color: #ffbb66;
   }
