@@ -66,6 +66,11 @@ export class AlumniComponent implements OnInit {
     this.getAllAlumni();
   }
 
+  // On rafraichit la page en cas de modification
+  refreshCurrentPage() {
+    window.location.reload();
+   }
+
   public getAllAlumni() {
     this.alumniService.getAllAlumni().subscribe( data => {
       console.log(data);
@@ -77,16 +82,19 @@ export class AlumniComponent implements OnInit {
   }
 
   public addAlumni(params:any) {
-    this.alumniService.createAlummni(params).subscribe( data => {
-      console.log(data);
-    },
+    this.alumniService.createAlummni(params).subscribe(
+    (response: Alumni) => {
+        this.refreshCurrentPage();
+      },
     (error: HttpErrorResponse) => {
       console.log("Error: addAlumni");
     });
   }
 
   public deleteAlumni(id:any) {
-    this.alumniService.deleteAlumni(id).subscribe ( data => {
+    this.alumniService.deleteAlumni(id).subscribe ( 
+    (response: Alumni) => {
+      this.refreshCurrentPage();
     },
     (error: HttpErrorResponse) => {
       console.log("Error: addAlumni");
@@ -172,11 +180,9 @@ export class AlumniComponent implements OnInit {
       {
         id: 'edit-alumni',
         cssClass: 'boutonsAction',
-        name: '',
+        name: 'Modification',
         excludeFromExport: true,
         field: 'edit',
-        maxWidth: 45,
-        minWidth: 45,
         formatter: this.editerFormatter,
         onCellClick: (e: Event, args: OnEventArgs) => {
           this.onSelectedAlumni(args.dataContext);
@@ -185,11 +191,9 @@ export class AlumniComponent implements OnInit {
       {
         id: 'delete-alumni',
         cssClass: 'boutonsAction',
-        name: '',
+        name: 'Suppression',
         excludeFromExport: true,
         field: 'delete',
-        maxWidth: 45,
-        minWidth: 45,
         formatter: this.deleteFormatter,
         onCellClick: (e: Event, args: OnEventArgs) => {
           console.log(args.dataContext);
